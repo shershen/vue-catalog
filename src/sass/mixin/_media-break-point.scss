@@ -1,0 +1,17 @@
+$grid-breakpoints: (xs: 0, sm: 380px, md: 964px, lg: 1216px, xsv: 0, smv: 600px, mdv: 960px, lgv: 1264px, xlv: 1904 ); // xl: 1904px
+
+@mixin media-break-point-up($point) {
+    @each $name, $width in $grid-breakpoints {
+        @if ($point == $name) {
+            @media (min-width: $width)  { @content; }
+        }
+    }
+}
+
+@mixin media-break-point-down($point) {
+    @each $name, $width in $grid-breakpoints {
+        @if ($point == $name) {
+            @media (max-width: $width - 0.02)  { @content; }
+        }
+    }
+}

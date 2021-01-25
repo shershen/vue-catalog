@@ -1,0 +1,79 @@
+.button{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 12px;
+    border-radius: 3px;
+    transition: all .3s linear;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    &:focus{
+        outline: none;
+    }
+    &:hover{
+        text-decoration: none;
+    }
+    &__loader{
+        height: 24px;
+        display: flex;
+        &-inner{
+            margin: auto;
+        }
+    }
+    &-primary{
+        background-color: $button;
+        color: #fff;
+        border: none;
+        &:hover{
+            background-color: $button-hover;
+        }
+        &:disabled{
+            background-color: $button-disabled;
+        }
+    }
+    &-secondary{
+        background-color: #F9FDFF;
+        color: #138ED9;
+        border: 1px solid #E2EAF2;
+        &:hover{
+            background-color: #138ED9;
+            border-color: #138ED9;
+            color: #fff;
+        }
+        &:disabled{
+            background-color: #047BC4;
+            border-color: #047BC4;
+        }
+    }
+    &-outlined{
+        background-color: #fff;
+        color: #138ED9;
+        border: 1px solid #F2F2F2;
+        &:hover{
+            background-color: rgba(196, 196, 196, 0.1);
+        }
+        &:disabled{
+            background-color: rgba(196, 196, 196, 0.2);
+        }
+    }
+    &-text{
+        background-color: transparent;
+        border: none;
+        color: #138ED9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        [class^=icon-]{
+            font-size: 24px;
+            margin-right: 8px;
+        }
+        &:hover{
+            color: #0E53A7;
+        }
+        &:disabled{
+            color: #152E56;
+        }
+    }
+}

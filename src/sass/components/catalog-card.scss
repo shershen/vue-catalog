@@ -1,0 +1,458 @@
+@import '../base/variables';
+@import '../base/buttons';
+@import '../mixin/grid-ie11';
+@import '../mixin/media-break-point';
+
+$normal-card: (
+    cols: 148px 1fr,
+    rows: 20px 76px 1fr 56px 62px
+);
+
+$horizontal-card: (
+    cols: 144px 1fr 224px,
+    rows: 44px 1fr 61px
+);
+
+.catalog-card{
+    background-color: #fff;
+    border: 1px solid #F2F2F2;
+    border-radius: 5px;
+    transition: all 0.7s ease;
+    & > * {
+        min-width: 0;
+    }
+    &:hover{
+        border-color: transparent;
+        box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
+        .catalog-card{
+            &__shope{
+                &-value{
+                    color: #0E53A7;
+                }
+            }
+            &__shope-info,
+            &__shope-address{
+                [class^=icon-], [class*=" icon-"]{
+                    color: $accent;
+                }
+            }
+        }
+    }
+    &__photo{
+        position: relative;
+        display: block;
+    }
+    @include media-break-point-up(lg){
+        &_normal{
+            @include grid($normal-card);
+            padding: 16px;
+            .catalog-card{
+                &__photo{
+                    @include grid-column(1, 1);
+                    @include grid-row(1, 3);
+                    margin-right: 12px;
+                }
+                &__info-stock{
+                    @include grid-column(2, 1);
+                    @include grid-row(1, 1);
+                }
+                &__info{
+                    @include grid-column(2, 1);
+                    @include grid-row(2, 1);
+                    margin-top: 12px;
+                }
+                &__name{
+                    max-height: 40px;
+                    word-break: break-word;
+                    text-overflow: -o-ellipsis-lastline;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                }
+                &__mode{
+                    @include grid-column(2, 1);
+                    @include grid-row(3, 1);
+                }
+                &__shope-info{
+                    @include grid-column(1, 2);
+                    @include grid-row(4, 1);
+                    margin-top: 16px;
+                }
+                &__action-block{
+                    @include grid-column(1, 2);
+                    @include grid-row(5, 1);
+                    margin-top: 16px;
+                    display: flex;
+                    align-items: center;
+                }
+                &__order-block{
+                    margin-left: auto;
+                }
+            }
+        }
+        &_horizontal{
+            @include grid($horizontal-card);
+            padding: 20px;
+            .catalog-card{
+                &__photo{
+                    @include grid-column(1, 1);
+                    @include grid-row(1, 3);
+                    margin-right: 16px;
+                }
+                &__info-stock{
+                    @include grid-column(3, 1);
+                    @include grid-row(1, 1);
+                    justify-content: flex-end;
+                    margin-bottom: 24px;
+                }
+                &__info{
+                    @include grid-column(2, 1);
+                    @include grid-row(1, 1);
+                }
+                &__name{
+                    white-space: nowrap;
+                }
+                &__mode{
+                    @include grid-column(2, 1);
+                    @include grid-row(2, 1);
+                }
+                &__shope-info{
+                    @include grid-column(2, 1);
+                    @include grid-row(3, 1);
+                    margin-top: auto;
+                }
+                &__action-block{
+                    @include grid-column(3, 1);
+                    @include grid-row(2, 2);
+                    margin-left: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                }
+                &__price{
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    &-old-block{
+                        margin-right: 16px;
+                    }
+                }
+                &__order-block{
+                    justify-content: flex-end;
+                    margin-top: 12px;
+                }
+            }
+        }
+    }
+    @include media-break-point-down(lg){
+        padding: 16px 16px 24px;
+    }
+    &__slider{
+        background-color: #f7f7f7;
+        border-radius: 3px;
+        overflow: hidden;
+        @include media-break-point-up(lg){
+            height: 132px;
+        }
+        @include media-break-point-down(lg){
+            height: 186px;
+        }
+        .card-img-slider{
+            &__images{
+                @include media-break-point-up(lg){
+                    height: 132px;
+                }
+                @include media-break-point-down(lg){
+                    height: 186px;
+                }
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    object-position: center;
+                    border-radius: 3px;
+                }
+            }
+        }
+    }
+    &__btn-favorite{
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 0;
+        width: 24px;
+        z-index: 3;
+        line-height: 1;
+        background: rgba(19, 19, 20, 0.1);
+        border-radius: 3px;
+        border: none;
+        transition: all 0.3s ease;
+        [class^=icon-], [class*=" icon-"]{
+            font-size: 16px;
+            line-height: 24px;
+            color: #fff;
+            opacity: 0.66;
+            transition: all 0.3s ease;
+        }
+        &:hover{
+            background-color: rgba(19, 19, 20, 0.5);
+            [class^=icon-], [class*=" icon-"]{
+                opacity: 1;
+            }
+        }
+        &_active{
+            [class^=icon-], [class*=" icon-"]{
+                color: $accent;
+                opacity: 1;
+            }
+        }
+    }
+    &__info-stock{
+        display: flex;
+        align-items: center;
+        @include media-break-point-down(lg){
+            margin-top: 16px;
+        }
+    }
+    &__state{
+        display: inline-block;
+        padding: 0 4px;
+        font-weight: bold;
+        font-size: 11px;
+        line-height: 20px;
+        border-radius: 5px;
+        background: #4F4F4F;
+        color: #fff;
+    }
+    &__stock{
+        margin-left: 6px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        white-space: nowrap;
+        @include media-break-point-down(lg){
+            font-size: 10px;
+        }
+        &_lot{
+            color: $button;
+        }
+    }
+    &__amount{
+        margin-left: 6px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        color: #4F4F4F;
+        @include media-break-point-down(lg){
+            font-size: 10px;
+        }
+    }
+    &__info{
+        @include media-break-point-down(lg){
+            margin-top: 8px;
+        }
+    }
+    &__code{
+        display: flex;
+        align-items: center;
+        font-weight: normal;
+        line-height: 16px;
+        @include media-break-point-up(md){
+            font-size: 13px;
+        }
+        @include media-break-point-down(md){
+            font-size: 11px;
+        }
+        &-title{
+            color: #828282;
+        }
+        &-value{
+            color: #4F4F4F;
+            margin-left: 4px;
+        }
+    }
+    &__name{
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: 600;
+        line-height: 20px;
+        color: $text;
+        @include media-break-point-up(lg){
+            margin-top: 8px;
+            font-size: 15px;
+        }
+        @include media-break-point-down(lg){
+            margin-top: 4px;
+            font-size: 12px;
+            max-height: 40px;
+            word-break: break-word;
+            text-overflow: -o-ellipsis-lastline;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+    }
+    &__mode{
+        font-weight: normal;
+        color: $text;
+        white-space: nowrap;
+        @include media-break-point-up(md){
+            margin-top: 8px;
+            font-size: 13px;
+            line-height: 20px;
+        }
+        @include media-break-point-down(md){
+            margin-top: 6px;
+            font-size: 11px;
+            line-height: 16px;
+        }
+    }
+    &__shope-info{
+        @include media-break-point-down(lg){
+            margin-top: 12px;
+        }
+    }
+    &__shope-name{
+        display: flex;
+        align-items: center;
+        &:hover{
+            text-decoration: none;
+        }
+        &-value{
+            font-weight: 500;
+            line-height: 16px;
+            color: $text;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: all 0.7s ease;
+            @include media-break-point-up(lg){
+                font-size: 13px;
+            }
+            @include media-break-point-down(lg){
+                font-size: 11px;
+            }
+        }
+        [class^=icon-], [class*=" icon-"]{
+            flex: 0 0 16px;
+            font-size: 16px;
+            color: #BDBDBD;
+            margin-right: 4px;
+            transition: all 0.7s ease;
+        }
+    }
+    &__shope-address{
+        display: flex;
+        align-items: center;
+        @include media-break-point-up(lg){
+            margin-top: 8px;
+        }
+        @include media-break-point-down(lg){
+            margin-top: 4px;
+        }
+        &-value{
+            font-weight: normal;
+            line-height: 16px;
+            color: #4f4f4f;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            @include media-break-point-up(lg){
+                font-size: 13px;
+            }
+            @include media-break-point-down(lg){
+                font-size: 11px;
+            }
+        }
+        [class^=icon-], [class*=" icon-"]{
+            flex: 0 0 16px;
+            font-size: 16px;
+            color: #BDBDBD;
+            margin-right: 4px;
+            transition: all 0.7s ease;
+        }
+    }
+    &__action-block{
+        @include media-break-point-down(lg){
+            margin-top: 12px;
+        }
+    }
+    &__btn-order{
+        display: block;
+        text-align: center;
+        @include media-break-point-up(lg){
+            width: 132px;
+            padding: 8px;
+            margin-left: 8px;
+        }
+        @include media-break-point-down(lg){
+            width: 100%;
+            padding: 9px;
+            margin-top: 12px;
+        }
+        &:hover{
+            background-color: $button;
+            border-color: $button;
+        }
+    }
+    &__price{
+        @include media-break-point-down(lg){
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+        &-old{
+            font-weight: 500;
+            line-height: 18px;
+            color: #4F4F4F;
+            text-decoration: line-through;
+            @include media-break-point-up(lg){
+                font-size: 12px;
+            }
+            @include media-break-point-down(lg){
+                font-size: 10px;
+            }
+            &-block{
+                display: flex;
+                align-items: center;
+                @include media-break-point-down(lg){
+                    margin-right: 16px;
+                }
+            }
+        }
+        &-total{
+            font-weight: bold;
+            color: $text;
+            @include media-break-point-up(lg){
+                font-size: 18px;
+                line-height: 24px;
+            }
+            @include media-break-point-down(lg){
+                font-size: 20px;
+                line-height: 28px;
+            }
+        }
+    }
+    &__discount-percent{
+        background: $accent;
+        border-radius: 3px;
+        color: #fff;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
+        padding: 0 4px;
+        margin-left: 4px;
+    }
+    &__count.count{
+        @include media-break-point-down(lg){
+            display: none;
+        }
+    }
+    &__order-block{
+        display: flex;
+        align-items: center;
+    }
+}
+
+@import "count";

@@ -1,0 +1,74 @@
+
+.count{
+    display: grid;
+    @include media-break-point-up(md){
+        grid-template-columns: 22px 1fr;
+    }
+    @include media-break-point-down(md){
+        grid-template-columns: 54px 1fr 54px;
+    }
+    &__actions{
+        flex: 0 0 18px;
+        margin-right: 4px;
+        line-height: 18px;
+    }
+    &__btn{
+        padding: 0;
+        background: #F9FDFF;
+        border: 1px solid #E2EAF2;
+        border-radius: 3px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
+        @include media-break-point-up(md){
+            width: 18px;
+            height: 18px;
+        }
+        @include media-break-point-down(md){
+            width: 42px;
+            height: 42px;
+        }
+        &_plus{
+            grid-column: 1/2;
+            grid-row: 1/2;
+            @include media-break-point-down(md){
+                margin-right: 12px;
+            }
+        }
+        &_minus{
+            @include media-break-point-up(md){
+                grid-column: 1/2;
+                grid-row: 2/3;
+            }
+            @include media-break-point-down(md){
+                grid-column: 3/4;
+                grid-row: 1/2;
+                margin-left: 12px;
+            }
+        }
+        & + .count__btn{
+            @include media-break-point-up(md){
+                margin-top: 4px;
+            }
+        }
+    }
+    &__input{
+        grid-column: 2/3;
+        padding: 8px 0;
+        background: #FFFFFF;
+        border: 1px solid #E2EAF2;
+        border-radius: 3px;
+        text-align: center;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        @include media-break-point-up(md){
+            grid-row: 1/3;
+            width: 42px;
+        }
+        @include media-break-point-down(md){
+            grid-row: 1/2;
+            width: 100%;
+        }
+    }
+}
